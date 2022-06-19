@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>订单管理</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+</head>
+<body>
+
+<div class="layui-tab layui-tab-brief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">订单信息</li>
+    </ul>
+</div>
+
+<div class="searchTable">
+    &nbsp;&nbsp;订单ID：
+    <div class="layui-inline">
+        <input class="layui-input" name="id" id="searchId" autocomplete="off">
+    </div>
+    &nbsp;&nbsp;学生ID：
+    <div class="layui-inline">
+        <input class="layui-input" name="sid" id="searchSid" autocomplete="off">
+    </div>
+    &nbsp;&nbsp;单车ID：
+    <div class="layui-inline">
+        <input class="layui-input" name="bid" id="searchBid" autocomplete="off">
+    </div>
+    &nbsp;&nbsp;学生姓名：
+    <div class="layui-inline">
+        <input class="layui-input" name="studentName" id="searchStudentName" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+
+<table class="layui-hide" id="list" lay-filter="list"></table>
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="batchDel">批量删除</button>
+    </div>
+</script>
+
+<script type="text/html" id="barOperation">
+    <a class="layui-btn layui-btn-xs" lay-event="isReturn">归还</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script src="../static/layui/layui.js"></script>
+<script src="../static/js/order/order.js"></script>
+</body>
+
+<div class="layui-row" id="editor" style="display: none;">
+    <div class="layui-col-md10">
+        <form class="layui-form" id="editorForm" lay-filter="editorForm" style="margin-top: 10px;">
+            <input type="hidden" name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">单车ID：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="bid" class="layui-input" lay-verify="number">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">学生ID：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sid" class="layui-input" lay-verify="number">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">押金：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="cash" class="layui-input" placeholder="￥(元)" lay-verify="number">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="remark" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" lay-submit lay-filter="editor-filter">提交
+                    </button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="layui-row" id="doReturn" style="display: none;">
+    <div class="layui-col-md10">
+        <form class="layui-form" id="returnForm" lay-filter="returnForm" style="margin-top: 10px;">
+            <input type="hidden" name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">归还状态</label>
+                <div class="layui-input-block">
+                    <select name="state" lay-filter="returnFilter">
+                        <option value="1">未归还</option>
+                        <option value="2">归还</option>
+                        <option value="3">归还(需维修)</option>
+                        <option value="4">归还(报废)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="remark" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" lay-submit lay-filter="return-filter">确定
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

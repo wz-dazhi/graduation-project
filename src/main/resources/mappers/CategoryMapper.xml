@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graduation.mapper.CategoryMapper">
+    <resultMap id="BaseResultMap" type="com.graduation.bean.Category">
+        <!--@mbg.generated-->
+        <!--@Table t_category-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="remain" jdbcType="INTEGER" property="remain"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="real_rent" jdbcType="DECIMAL" property="realRent"/>
+        <result column="cash" jdbcType="DECIMAL" property="cash"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="del" jdbcType="BOOLEAN" property="del"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id,
+        `name`,
+        remain,
+        price,
+        real_rent,
+        cash,
+        remark,
+        del,
+        create_time,
+        update_time
+    </sql>
+
+    <select id="page" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_category
+        <where>
+            <if test="req.name != null and req.name != ''">
+                instr(name, #{req.name}) > 0
+            </if>
+        </where>
+    </select>
+</mapper>

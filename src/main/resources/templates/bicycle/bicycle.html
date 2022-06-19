@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>单车信息</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+</head>
+<body>
+<div class="layui-tab layui-tab-brief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">单车信息</li>
+    </ul>
+</div>
+
+<div class="searchTable">
+    &nbsp;&nbsp;单车名称：
+    <div class="layui-inline">
+        <input class="layui-input" name="name" id="searchName" autocomplete="off">
+    </div>
+    &nbsp;&nbsp;单车分类：
+    <div class="layui-inline">
+        <input class="layui-input" name="categoryName" id="searchCategory" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+
+<table class="layui-hide" id="list" lay-filter="list"></table>
+
+<script type="text/html" id="imgTpl">
+    <div>
+        <img src="{{d.img}}" alt="{{d.name}}" style="height: 50px;width: 50px">
+    </div>
+</script>
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="batchDel">批量删除</button>
+    </div>
+</script>
+
+<script type="text/html" id="barOperation">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script src="../static/layui/layui.js"></script>
+<script src="../static/js/bicycle/bicycle.js"></script>
+</body>
+
+<div class="layui-row" id="editor" style="display: none;">
+    <div class="layui-col-md10">
+        <form class="layui-form" id="editorForm" lay-filter="editorForm" style="margin-top: 10px;">
+            <input type="hidden" name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" class="layui-input" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类ID：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="cid" class="layui-input" lay-verify="number">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">单车图片：</label>
+                <div class="layui-input-block layui-upload" style="height: 168px;">
+                    <input type="hidden" name="img" id="img" class="layui-input" lay-verify="file">
+                    <button type="button" class="layui-btn" id="uploadBtn">上传</button>
+                    <div class="layui-upload-list">
+                        <img class="layui-upload-img" style="height: 92px;width: 92px;" id="uploadImg">
+                        <p id="uploadText"></p>
+                    </div>
+                    <div style="width: 95px;">
+                        <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="uploadFilter">
+                            <div class="layui-progress-bar" lay-percent=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">当前状态：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="state" class="layui-input" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">入库时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="inTime" id="inTime" class="layui-input" lay-verify="datetime"
+                           placeholder="yyyy-MM-dd HH:mm:ss">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="remark" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" lay-submit lay-filter="editor-filter">提交
+                    </button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

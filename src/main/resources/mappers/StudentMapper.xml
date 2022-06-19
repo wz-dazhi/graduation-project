@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graduation.mapper.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.graduation.bean.Student">
+        <!--@mbg.generated-->
+        <!--@Table t_student-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="no" jdbcType="VARCHAR" property="no"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="SMALLINT" property="sex"/>
+        <result column="id_card" jdbcType="VARCHAR" property="idCard"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="faculty" jdbcType="VARCHAR" property="faculty"/>
+        <result column="major" jdbcType="VARCHAR" property="major"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="del" jdbcType="BOOLEAN" property="del"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id,
+        `no`,
+        `name`,
+        sex,
+        id_card,
+        email,
+        phone,
+        avatar,
+        faculty,
+        major,
+        remark,
+        del,
+        create_time,
+        update_time
+    </sql>
+</mapper>

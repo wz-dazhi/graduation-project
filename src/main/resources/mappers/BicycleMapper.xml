@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.graduation.mapper.BicycleMapper">
+    <resultMap id="BaseResultMap" type="com.graduation.bean.Bicycle">
+        <!--@mbg.generated-->
+        <!--@Table t_bicycle-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="cid" jdbcType="BIGINT" property="cid"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="img" jdbcType="VARCHAR" property="img"/>
+        <result column="in_time" jdbcType="TIMESTAMP" property="inTime"/>
+        <result column="state" jdbcType="SMALLINT" property="state"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="del" jdbcType="BOOLEAN" property="del"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id,
+        cid,
+        `name`,
+        img,
+        in_time,
+        `state`,
+        remark,
+        del,
+        create_time,
+        update_time
+    </sql>
+
+    <select id="page" resultType="com.graduation.dto.resp.BicyclePageResp">
+        SELECT b.id      id,
+               b.cid     cid,
+               b.name    name,
+               c.name    categoryName,
+               b.img     img,
+               b.in_time inTime,
+               b.state   state,
+               b.remark  remark
+        FROM t_bicycle b,
+             t_category c
+        WHERE b.cid = c.id
+        <if test="name != null and name != ''">
+            AND INSTR(b.name, #{name}) > 0
+        </if>
+        <if test="categoryName != null and categoryName != ''">
+            AND INSTR(c.name, #{categoryName}) > 0
+        </if>
+    </select>
+</mapper>
