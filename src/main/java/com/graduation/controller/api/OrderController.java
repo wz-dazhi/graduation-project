@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping(Const.API + "/order")
@@ -32,14 +31,12 @@ public class OrderController {
 
     @PostMapping("/add")
     public Result<Boolean> add(@RequestBody Order order) {
-        order.setBorrowTime(LocalDateTime.now());
-        return R.ok(orderService.save(order));
+        return R.ok(orderService.add(order));
     }
 
     @PostMapping("/state_update")
     public Result<Boolean> update(@RequestBody Order order) {
-        order.setReturnTime(LocalDateTime.now());
-        return R.ok(orderService.updateById(order));
+        return R.ok(orderService.updateStatus(order));
     }
 
     @DeleteMapping("/del")

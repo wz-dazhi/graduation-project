@@ -10,5 +10,7 @@ public interface CategoryService extends IService<Category> {
 
     IPage<Category> page(CategoryPageReq req);
 
+    boolean editor(Category category);
+
     void del(IdsReq req);
 }

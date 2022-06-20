@@ -30,12 +30,12 @@ public class CategoryController {
 
     @PostMapping("/add")
     public Result<Boolean> add(@RequestBody Category category) {
-        return R.ok(categoryService.save(category));
+        return R.ok(categoryService.editor(category));
     }
 
     @PostMapping("/update")
     public Result<Boolean> update(@RequestBody Category category) {
-        return R.ok(categoryService.updateById(category));
+        return R.ok(categoryService.editor(category));
     }
 
     @DeleteMapping("/del")

@@ -35,8 +35,11 @@ public class BicyclePageResp extends Base {
     @ApiModelProperty("入库时间")
     private LocalDateTime inTime;
 
-    @ApiModelProperty("当前状态")
+    @ApiModelProperty("状态")
     private Integer state;
+
+    @ApiModelProperty("状态描述")
+    private String stateDesc;
 
     @Override
     public String toString() {

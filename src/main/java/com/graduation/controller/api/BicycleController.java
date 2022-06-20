@@ -1,12 +1,12 @@
 package com.graduation.controller.api;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.graduation.bean.Bicycle;
 import com.graduation.constant.Const;
 import com.graduation.dto.req.BicyclePageReq;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.dto.resp.BicyclePageResp;
 import com.graduation.service.BicycleService;
+import com.wz.datasource.mybatisplus.model.IPage;
 import com.wz.swagger.model.Result;
 import com.wz.swagger.util.R;
 import lombok.AllArgsConstructor;
@@ -31,12 +31,12 @@ public class BicycleController {
 
     @PostMapping("/add")
     public Result<Boolean> add(@RequestBody Bicycle category) {
-        return R.ok(bicycleService.save(category));
+        return R.ok(bicycleService.editor(category));
     }
 
     @PostMapping("/update")
     public Result<Boolean> update(@RequestBody Bicycle category) {
-        return R.ok(bicycleService.updateById(category));
+        return R.ok(bicycleService.editor(category));
     }
 
     @DeleteMapping("/del")
