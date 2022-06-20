@@ -50,6 +50,9 @@
              t_bicycle b
         WHERE o.sid = s.id
           AND o.bid = b.id
+          AND o.del = 0
+          AND s.del = 0
+          AND b.del = 0
         <if test="id != null">
             AND o.id = #{id}
         </if>

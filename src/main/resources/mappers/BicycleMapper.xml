@@ -41,6 +41,8 @@
         FROM t_bicycle b,
              t_category c
         WHERE b.cid = c.id
+          AND b.del = 0
+          AND c.del = 0
         <if test="name != null and name != ''">
             AND INSTR(b.name, #{name}) > 0
         </if>

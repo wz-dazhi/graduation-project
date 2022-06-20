@@ -45,10 +45,11 @@ spring:
     cache: false
 mybatis-plus:
   mapper-locations: classpath*:/mappers/*.xml
-  type-aliases-package:
+  type-aliases-package: com.graduation.bean,com.graduation.dto
   global-config:
     db-config:
       id-type: auto
+      logic-delete-field: del
   configuration:
     map-underscore-to-camel-case: true
 api:
