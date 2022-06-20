@@ -2,6 +2,8 @@ package com.graduation.constant;
 
 import lombok.experimental.UtilityClass;
 
+import java.math.BigDecimal;
+
 /**
  * @projectName: graduation-project
  * @package: com.graduation.constant
@@ -14,4 +16,5 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class Const {
     public static final String API = "/api/";
+    public static final String LIMIT_1 = " LIMIT 1 ";
 }
