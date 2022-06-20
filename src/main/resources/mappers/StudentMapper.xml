@@ -36,4 +36,14 @@
         create_time,
         update_time
     </sql>
+
+    <select id="page" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_student
+        WHERE del = 0
+        <if test="name != null and name != ''">
+            AND INSTR(name, #{name}) > 0
+        </if>
+    </select>
 </mapper>
