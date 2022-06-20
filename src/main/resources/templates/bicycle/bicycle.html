@@ -81,10 +81,21 @@
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item">
+            <!-- <div class="layui-form-item">
                 <label class="layui-form-label">当前状态：</label>
                 <div class="layui-input-block">
                     <input type="text" name="state" class="layui-input" lay-verify="required">
+                </div>
+            </div> -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">单车状态</label>
+                <div class="layui-input-block">
+                    <select name="state" lay-filter="stateFilter">
+                        <option value="1">未借</option>
+                        <option value="2">已借</option>
+                        <option value="3">需维修</option>
+                        <option value="4">报废</option>
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item">

@@ -202,7 +202,8 @@ function list(t) {
             {field: 'cid', title: '分类ID', align: 'center'},
             {field: 'categoryName', title: '分类名称', align: 'center'},
             {field: 'img', title: '单车图片', align: 'center', templet: '#imgTpl'},
-            {field: 'state', title: '当前状态', align: 'center'},
+            {field: 'state', title: '状态', align: 'center', hide: true},
+            {field: 'stateDesc', title: '状态', align: 'center', width: 175},
             {field: 'inTime', title: '入库时间', align: 'center', width: 165},
             {field: 'remark', title: '备注', align: 'center'},
             {fixed: 'right', title: '操作', align: 'center', toolbar: '#barOperation', width: 180}

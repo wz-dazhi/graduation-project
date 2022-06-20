@@ -145,9 +145,10 @@ function list(t) {
             {field: 'realRent', title: '租金(元/小时)', align: 'center', width: 115, totalRow: true},
             {field: 'borrowTime', title: '出借时间', align: 'center', width: 165},
             {field: 'returnTime', title: '归还时间', align: 'center', width: 165},
-            {field: 'state', title: '状态', align: 'center', width: 130},
-            {field: 'remark', title: '备注', align: 'center', width: 130},
-            {fixed: 'right', title: '操作', align: 'center', toolbar: '#barOperation', width: 150}
+            {field: 'state', title: '状态', align: 'center', hide: true},
+            {field: 'stateDesc', title: '状态', align: 'center', width: 150},
+            {field: 'remark', title: '备注', align: 'center', width: 158},
+            {fixed: 'right', title: '操作', align: 'center', toolbar: '#barOperation', width: 100}
         ]],
         id: 'listReload',
         page: true,

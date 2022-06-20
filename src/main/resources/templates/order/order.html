@@ -36,15 +36,20 @@
 
 <table class="layui-hide" id="list" lay-filter="list"></table>
 
-<script type="text/html" id="toolbar">
-    <div class="layui-btn-container">
-        <button class="layui-btn layui-btn-sm" lay-event="batchDel">批量删除</button>
-    </div>
-</script>
+<!--<script type="text/html" id="toolbar">-->
+<!--    <div class="layui-btn-container">-->
+<!--        <button class="layui-btn layui-btn-sm" lay-event="batchDel">批量删除</button>-->
+<!--    </div>-->
+<!--</script>-->
 
 <script type="text/html" id="barOperation">
+    {{#  if(d.state == 1) { }}
     <a class="layui-btn layui-btn-xs" lay-event="isReturn">归还</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    {{#  } }}
+    {{#  if(d.state > 1) { }}
+    <a class="layui-btn layui-btn-xs layui-btn-disabled">已归还</a>
+    {{#  } }}
+    <!--    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
 </script>
 
 <script src="../static/layui/layui.js"></script>

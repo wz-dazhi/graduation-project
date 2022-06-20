@@ -57,7 +57,7 @@ function add(layer, table, form, active, $, http) {
         http.post(uri, {
             id: f.id,
             name: f.name,
-            remain: f.remain,
+            // remain: f.remain,
             price: f.price,
             realRent: f.realRent,
             cash: f.cash,
@@ -100,7 +100,7 @@ function editor(form, data) {
     form.val("editorForm", {
         "id": isNull ? null : data.id,
         "name": isNull ? null : data.name,
-        "remain": isNull ? null : data.remain,
+        // "remain": isNull ? null : data.remain,
         "price": isNull ? null : data.price,
         "realRent": isNull ? null : data.realRent,
         "cash": isNull ? null : data.cash,
@@ -124,11 +124,11 @@ function list(t) {
             {type: 'checkbox', fixed: 'left'},
             {field: 'id', title: 'ID', align: 'center', sort: true, totalRowText: '合计'},
             {field: 'name', title: '品牌名称', align: 'center'},
-            {field: 'remain', title: '剩余数量', align: 'center', totalRow: true, sort: true},
+            // {field: 'remain', title: '剩余数量', align: 'center', totalRow: true, sort: true},
             {field: 'price', title: '采购单价(元)', align: 'center', totalRow: true},
             {field: 'realRent', title: '租金(元/小时)', align: 'center', totalRow: true},
             {field: 'cash', title: '押金(元)', align: 'center', totalRow: true},
-            {field: 'remark', title: '备注', align: 'center'},
+            {field: 'remark', title: '备注', align: 'center', width: 350},
             {fixed: 'right', title: '操作', align: 'center', toolbar: '#barOperation'}
         ]],
         id: 'categoryReload',
