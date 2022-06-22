@@ -134,7 +134,7 @@ function operate(table, layer, active, http, $, form, element) {
                 });
             });
         } else if (layEvent === 'edit') {
-            if (data.img !== null) {
+            if (data.img !== null && data.img !== '') {
                 $('#uploadImg').attr('src', data.img);
                 $('#uploadText').html('');
                 element.progress('uploadFilter', '100%');
