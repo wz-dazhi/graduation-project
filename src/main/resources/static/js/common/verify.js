@@ -10,6 +10,11 @@ layui.define(['form'], function (exports) {
             if (value === null || value === '') {
                 return '文件不能为空';
             }
+        },
+        avatar: (value, item) => {
+            if (value === null || value === '') {
+                return '头像不能为空';
+            }
         }
     });
     exports('verify');
