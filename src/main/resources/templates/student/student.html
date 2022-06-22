@@ -2,11 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>学生管理</title>
+    <link rel="stylesheet" href="../static/layui/css/layui.css">
+    <style>
+        .layui-table-cell {
+            height: 53px;
+            line-height: 53px;
+        }
+        .laytable-cell-checkbox {
+            height: 53px;
+            line-height: 53px;
+        }
+    </style>
 </head>
 <body>
-<p>
-    学生管理
-</p>
+<div class="layui-tab layui-tab-brief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">单车信息</li>
+    </ul>
+</div>
+
+<div class="searchTable">
+    &nbsp;&nbsp;姓名：
+    <div class="layui-inline">
+        <input class="layui-input" name="name" id="searchName" autocomplete="off">
+    </div>
+    <button class="layui-btn" data-type="reload">搜索</button>
+</div>
+
+<table class="layui-hide" id="list" lay-filter="list"></table>
+
+<script type="text/html" id="imgTpl">
+    <div>
+        <img class="layui-nav-img" src="{{d.avatar}}" alt="{{d.name}}" style="height: 50px;width: 50px">
+    </div>
+</script>
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="batchDel">批量删除</button>
+    </div>
+</script>
+
+<script type="text/html" id="barOperation">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script src="../static/layui/layui.js"></script>
+<script src="../static/js/student/student.js"></script>
 </body>
+
+<div class="layui-row" id="editor" style="display: none;">
+    <div class="layui-col-md10">
+        <form class="layui-form" id="editorForm" lay-filter="editorForm" style="margin-top: 10px;">
+            <input type="hidden" name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label">头像：</label>
+                <div class="layui-input-block layui-upload" style="height: 168px;">
+                    <input type="hidden" name="avatar" id="img" class="layui-input" lay-verify="avatar">
+                    <button type="button" class="layui-btn" id="uploadBtn">上传</button>
+                    <div class="layui-upload-list">
+                        <img class="layui-nav-img" style="height: 92px;width: 92px;" id="uploadImg">
+                        <p id="uploadText"></p>
+                    </div>
+                    <div style="width: 95px;">
+                        <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="uploadFilter">
+                            <div class="layui-progress-bar" lay-percent=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="name" class="layui-input" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block">
+                    <select name="sex" lay-filter="sexFilter" lay-verify="required">
+                        <option value="1" selected="">女</option>
+                        <option value="2">男</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="idCard" class="layui-input" lay-verify="required|identity">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">电话：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="phone" class="layui-input" lay-verify="required|phone">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="email" class="layui-input" lay-verify="required|email">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">院系：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="faculty" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">专业：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="major" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="remark" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-normal" lay-submit lay-filter="editor-filter">提交
+                    </button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 </html>
