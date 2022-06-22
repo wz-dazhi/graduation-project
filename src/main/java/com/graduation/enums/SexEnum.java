@@ -1,6 +1,7 @@
 package com.graduation.enums;
 
 import com.wz.common.enums.IEnum;
+import com.wz.common.util.StringUtil;
 import lombok.AllArgsConstructor;
 
 /**
@@ -13,23 +14,23 @@ import lombok.AllArgsConstructor;
  * @version: 1.0
  */
 @AllArgsConstructor
-public enum SexEnum implements IEnum<Integer, String> {
+public enum SexEnum implements IEnum<Short, String> {
 
     /**
      * 女
      */
-    FEMALE(1, "女"),
+    FEMALE((short) 1, "女"),
     /**
      * 男
      */
-    MALE(2, "男"),
+    MALE((short) 2, "男"),
     ;
 
-    private final Integer code;
+    private final Short code;
     private final String desc;
 
     @Override
-    public Integer code() {
+    public Short code() {
         return code;
     }
 
@@ -38,8 +39,9 @@ public enum SexEnum implements IEnum<Integer, String> {
         return desc;
     }
 
-    public static String desc(Integer code) {
-        return Enums.desc(code, values());
+    public static String desc(Short code) {
+        String desc = Enums.desc(code, values());
+        return StringUtil.isBlank(desc) ? "未知" : desc;
     }
 
 }
