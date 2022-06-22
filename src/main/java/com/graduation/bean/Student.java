@@ -31,6 +31,7 @@ public class Student extends Bean implements Serializable {
      */
     @TableField(value = "sex")
     private Short sex;
+    private transient String sexDesc;
 
     /**
      * 身份证
