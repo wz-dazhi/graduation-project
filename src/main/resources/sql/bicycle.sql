@@ -11,7 +11,7 @@
  Target Server Version : 50728
  File Encoding         : 65001
 
- Date: 19/06/2022 17:41:02
+ Date: 22/06/2022 16:42:09
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `t_bicycle` (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='单车分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='单车分类表';
 
 -- ----------------------------
 -- Table structure for t_category
@@ -52,7 +52,7 @@ CREATE TABLE `t_category` (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uni_name` (`name`) USING HASH COMMENT '名称唯一'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='单车分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='单车分类表';
 
 -- ----------------------------
 -- Table structure for t_log
@@ -87,7 +87,7 @@ CREATE TABLE `t_order` (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='订单表';
 
 -- ----------------------------
 -- Table structure for t_student
@@ -97,19 +97,19 @@ CREATE TABLE `t_student` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `no` varchar(50) NOT NULL COMMENT '编号',
   `name` varchar(20) NOT NULL COMMENT '姓名',
-  `sex` smallint(1) NOT NULL COMMENT '性别: 1-女, 2-男',
+  `sex` smallint(1) DEFAULT NULL COMMENT '性别: 1-女, 2-男',
   `id_card` varchar(20) NOT NULL COMMENT '身份证',
   `email` varchar(20) DEFAULT NULL COMMENT '邮箱',
   `phone` varchar(11) NOT NULL COMMENT '电话',
-  `avatar` varchar(255) DEFAULT NULL COMMENT '头像',
-  `faculty` varchar(30) DEFAULT NULL COMMENT '院系',
+  `avatar` longtext COMMENT '头像',
+  `faculty` varchar(20) DEFAULT NULL COMMENT '院系',
   `major` varchar(20) DEFAULT NULL COMMENT '专业',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除: 0-否, 1-是',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学生表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COMMENT='学生表';
 
 -- ----------------------------
 -- Table structure for t_user
@@ -127,7 +127,8 @@ CREATE TABLE `t_user` (
   `del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除: 0-否, 1-是',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_username` (`username`) USING HASH COMMENT '用户名唯一'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
 
 SET FOREIGN_KEY_CHECKS = 1;
