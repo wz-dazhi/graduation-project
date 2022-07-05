@@ -6,6 +6,7 @@
         <!--@Table t_log-->
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="operator_id" jdbcType="BIGINT" property="operatorId"/>
+        <result column="name" jdbcType="BIGINT" property="operatorName"/>
         <result column="msg" jdbcType="VARCHAR" property="msg"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="del" jdbcType="BOOLEAN" property="del"/>
@@ -22,4 +23,15 @@
         create_time,
         update_time
     </sql>
+
+    <select id="page" resultMap="BaseResultMap">
+        SELECT l.id,
+               l.operator_id,
+               l.msg,
+               u.name
+        FROM t_log l,
+             t_user u
+        WHERE l.operator_id = u.id
+        ORDER BY l.create_time DESC
+    </select>
 </mapper>
