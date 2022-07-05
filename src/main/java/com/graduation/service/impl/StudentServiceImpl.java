@@ -11,11 +11,14 @@ import com.graduation.dto.req.StudentPageReq;
 import com.graduation.enums.SexEnum;
 import com.graduation.mapper.OrderMapper;
 import com.graduation.mapper.StudentMapper;
+import com.graduation.service.LogService;
 import com.graduation.service.StudentService;
+import com.graduation.util.LogHelper;
 import com.wz.common.exception.BusinessException;
 import com.wz.datasource.mybatisplus.model.IPage;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,31 +26,35 @@ import java.util.List;
 @AllArgsConstructor
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements StudentService {
     private final OrderMapper orderMapper;
+    private final LogService logService;
 
     @Override
     public IPage<Student> page(StudentPageReq req) {
         IPage<Student> p = baseMapper.page(req);
-        p.consumer(s -> s.setSexDesc(SexEnum.desc(s.getSex())));
+        p.consumer(SexEnum::desc);
         return p;
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean editor(Student s) {
-        return s.getId() == null || s.getId() <= 0 ? save(s) : updateById(s);
+        return s.getId() == null || s.getId() <= 0 ? save(s) : updateById(s) && logService.save(LogHelper.log(s.msg()));
     }
 
     @Override
     public boolean save(Student s) {
         s.setNo(IdWorker.getIdStr());
-        return super.save(s);
+        return super.save(s) && logService.save(LogHelper.log(s.msg()));
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void del(IdsReq req) {
         List<Long> ids = req.getIds();
         if (orderMapper.exists(Wrappers.<Order>lambdaQuery().in(Order::getSid, ids).last(Const.LIMIT_1))) {
             throw new BusinessException("删除的学生存在订单, 删除失败");
         }
+        logService.save(LogHelper.log("删除学生. 学生ID: ", ids));
         removeByIds(ids);
     }
 }

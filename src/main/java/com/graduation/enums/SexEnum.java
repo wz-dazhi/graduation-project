@@ -1,5 +1,6 @@
 package com.graduation.enums;
 
+import com.graduation.bean.Student;
 import com.wz.common.enums.IEnum;
 import com.wz.common.util.StringUtil;
 import lombok.AllArgsConstructor;
@@ -42,6 +43,10 @@ public enum SexEnum implements IEnum<Short, String> {
     public static String desc(Short code) {
         String desc = Enums.desc(code, values());
         return StringUtil.isBlank(desc) ? "未知" : desc;
+    }
+
+    public static void desc(Student s) {
+        s.setSexDesc(desc(s.getSex()));
     }
 
 }
