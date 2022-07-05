@@ -2,8 +2,6 @@ package com.graduation.interceptor;
 
 import com.graduation.bean.User;
 import com.graduation.mapper.UserMapper;
-import com.wz.common.util.JsonUtil;
-import com.wz.swagger.util.R;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

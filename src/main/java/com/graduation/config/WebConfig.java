@@ -22,7 +22,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry r) {
-        r.addInterceptor(userInterceptor).excludePathPatterns("/login.html", "/api/user/login");
+        r.addInterceptor(userInterceptor)
+                .excludePathPatterns("/login.html", "/api/user/login", "/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**", "/doc.html/**");
     }
 
 }
