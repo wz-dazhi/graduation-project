@@ -20,6 +20,10 @@ public class UserHolder {
         USER_THREAD_LOCAL.set(user);
     }
 
+    public static User user() {
+        return USER_THREAD_LOCAL.get();
+    }
+
     public static void remove() {
         USER_THREAD_LOCAL.remove();
     }
