@@ -73,4 +73,13 @@ public class Student extends Bean implements Serializable {
     public String toString() {
         return super.toString();
     }
+
+    public String msg() {
+        if (getId() == null) {
+            return String.format("新增学生. 姓名: %s, 电话: %s, 院系: %s, 专业: %s",
+                    name, phone, faculty, major);
+        }
+        return String.format("更新学生. ID: %s, 姓名: %s, 电话: %s, 院系: %s, 专业: %s",
+                getId(), name, phone, faculty, major);
+    }
 }

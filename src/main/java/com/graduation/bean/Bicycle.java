@@ -2,6 +2,8 @@ package com.graduation.bean;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.graduation.enums.BicycleEnum;
+import com.wz.common.constant.DateConsts;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -48,5 +50,14 @@ public class Bicycle extends Bean implements Serializable {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    public String msg() {
+        boolean isSave = getId() == null;
+        if (isSave) {
+            return String.format("新增单车. 名称: %s, 入库时间: %s", name, inTime.format(DateConsts.DATE_TIME_HH_MM_SS_FORMATTER));
+        }
+        return String.format("修改单车. ID: %s, 分类ID: %s, 名称: %s, 入库时间: %s, 状态: %s",
+                getId(), cid, name, inTime.format(DateConsts.DATE_TIME_HH_MM_SS_FORMATTER), BicycleEnum.desc(state));
     }
 }

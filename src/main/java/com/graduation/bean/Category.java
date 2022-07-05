@@ -49,4 +49,14 @@ public class Category extends Bean implements Serializable {
     public String toString() {
         return super.toString();
     }
+
+    public String msg() {
+        boolean isSave = getId() == null;
+        if (isSave) {
+            return String.format("新增单车分类. 名称: %s, 单价: %s, 租金: %s, 押金: %s",
+                    name, price, realRent, cash);
+        }
+        return String.format("更新单车分类. ID: %s, 名称: %s, 单价: %s, 租金: %s, 押金: %s",
+                getId(), name, price, realRent, cash);
+    }
 }
