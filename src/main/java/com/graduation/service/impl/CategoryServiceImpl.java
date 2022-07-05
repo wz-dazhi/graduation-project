@@ -5,15 +5,19 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.graduation.bean.Bicycle;
 import com.graduation.bean.Category;
+import com.graduation.bean.Log;
 import com.graduation.constant.Const;
 import com.graduation.dto.req.CategoryPageReq;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.mapper.BicycleMapper;
 import com.graduation.mapper.CategoryMapper;
 import com.graduation.service.CategoryService;
+import com.graduation.service.LogService;
+import com.graduation.util.LogHelper;
 import com.wz.common.exception.BusinessException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,20 +25,23 @@ import java.util.List;
 @AllArgsConstructor
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
     private final BicycleMapper bicycleMapper;
+    private final LogService logService;
 
     @Override
     public IPage<Category> page(CategoryPageReq req) {
         return baseMapper.page(req);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public boolean editor(Category category) {
         this.verifyName(category.getName(), category.getId());
+        Log l = LogHelper.log(category.msg());
         if (category.getId() == null || category.getId() <= 0) {
-            return this.save(category);
+            return this.save(category) && logService.save(l);
         }
 
-        return this.updateById(category);
+        return this.updateById(category) && logService.save(l);
     }
 
     private void verifyName(String name, Long id) {
@@ -43,6 +50,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void del(IdsReq req) {
         List<Long> ids = req.getIds();
@@ -50,6 +58,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
             if (bicycleMapper.exists(Wrappers.<Bicycle>lambdaQuery().eq(Bicycle::getCid, id).last(Const.LIMIT_1)))
                 throw new BusinessException("当前分类[" + id + "]已绑定单车, 删除失败");
         }
+        Log l = LogHelper.log("删除单车分类. 分类ID: ", ids);
+        logService.save(l);
         this.removeByIds(ids);
     }
 
