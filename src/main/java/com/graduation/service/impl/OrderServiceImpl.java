@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.graduation.bean.Bicycle;
 import com.graduation.bean.Category;
+import com.graduation.bean.Log;
 import com.graduation.bean.Order;
 import com.graduation.bean.Student;
 import com.graduation.constant.Const;
@@ -16,7 +17,10 @@ import com.graduation.mapper.BicycleMapper;
 import com.graduation.mapper.CategoryMapper;
 import com.graduation.mapper.OrderMapper;
 import com.graduation.mapper.StudentMapper;
+import com.graduation.service.LogService;
 import com.graduation.service.OrderService;
+import com.graduation.util.LogHelper;
+import com.wz.common.constant.DateConsts;
 import com.wz.common.exception.BusinessException;
 import com.wz.common.util.DateUtil;
 import com.wz.datasource.mybatisplus.model.IPage;
@@ -35,6 +39,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     private final BicycleMapper bicycleMapper;
     private final CategoryMapper categoryMapper;
     private final StudentMapper studentMapper;
+    private final LogService logService;
 
     @Override
     public IPage<OrderPageResp> page(OrderPageReq req) {
@@ -77,7 +82,9 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         o.setBorrowTime(LocalDateTime.now());
         o.setState(OrderEnum.NOT_RETURNED.code());
         b.setState(BicycleEnum.BORROWED.code());
-        return save(o) && bicycleMapper.updateById(b) == 1;
+        String msg = String.format("新增订单. 出借学生: %s,单车: %s,出借时间: %s", sid, o.getBid(), o.getBorrowTime().format(DateConsts.DATE_TIME_HH_MM_SS_FORMATTER));
+        Log l = LogHelper.log(msg);
+        return save(o) && bicycleMapper.updateById(b) == 1 && logService.save(l);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -122,11 +129,16 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         o.setReturnTime(returnTime);
         o.setRealRent(realRent);
 
-        return updateById(o) && bicycleMapper.updateById(b) == 1;
+        String msg = String.format("订单还车. 订单ID: %s, 学生: %s, 单车: %s, 归还时间: %s, 获得租金: %s, 归还状态: %s",
+                o.getId(), o.getSid(), o.getBid(), returnTime, realRent, OrderEnum.desc(b.getState()));
+        Log l = LogHelper.log(msg);
+
+        return updateById(o) && bicycleMapper.updateById(b) == 1 && logService.save(l);
     }
 
     @Override
     public void del(IdsReq req) {
+        throw new BusinessException("不允许删除订单");
 //        List<Long> ids = req.getIds();
 //        if (lambdaQuery().in(Order::getId, ids).eq(Order::getState, OrderEnum.NOT_RETURNED.code()).last(Const.LIMIT_1).exists()) {
 //            throw new BusinessException("存在未归还的订单, 删除失败");
