@@ -30,4 +30,21 @@
         create_time,
         update_time
     </sql>
+
+    <select id="page" resultMap="BaseResultMap">
+        SELECT id,
+               `name`,
+               username,
+               `password`,
+               phone,
+               avatar,
+               remark,
+               login_time
+        FROM t_user
+        where del = 0
+        <if test="name != null and name != ''">
+            and INSTR(name, #{name}) > 0
+        </if>
+        ORDER BY id desc
+    </select>
 </mapper>
