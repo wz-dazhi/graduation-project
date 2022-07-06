@@ -8,18 +8,39 @@
 </head>
 <body>
 
-<!-- 你的 HTML 代码 -->
-
+<div class="login-wrap">
+    <form class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <i class="layui-icon layui-icon-username"></i>
+            </label>>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="text" name="username" placeholder="请输入账号" autocomplete="off" class="layui-input"
+                           lay-verify="required" lay-verType="tips">
+                </label>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                <i class="layui-icon layui-icon-password"></i>
+            </label>>
+            <div class="layui-input-inline">
+                <label>
+                    <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input"
+                           lay-verify="required|password" lay-verType="tips">
+                </label>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="doLogin">登录</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
 <script src="../static/layui/layui.js"></script>
-<script>
-    //一般直接写在一个 js 文件中
-    layui.use(['layer', 'form'], function () {
-        var layer = layui.layer
-            , form = layui.form;
-
-        //欢迎语
-        layer.msg('Hello World');
-    });
-</script>
+<script src="../static/js/login.js"></script>
 </body>
 </html>

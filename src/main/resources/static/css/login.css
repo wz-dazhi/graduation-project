@@ -1,0 +1,70 @@
+html {
+    min-height: 100%
+}
+
+span {
+    display: inline-block
+}
+
+body {
+    font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-size: cover;
+    background: url("../img/login-bg.jpg") no-repeat center center;
+    height: 100%;
+    color: #333333
+}
+
+.login-wrap {
+    position: absolute;
+    width: 440px;
+    height: 350px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.12)
+}
+
+.login-wrap .title img {
+    width: 150px;
+    height: 60px;
+    margin: 34px 0 0 40px
+}
+
+.login-wrap .title span {
+    font-size: 20px;
+    color: white;
+    vertical-align: bottom;
+    margin: 0 0 20px 30px;
+    padding: 0 0 0 30px;
+    border-left: 1px solid white;
+    line-height: 1
+}
+
+.login-wrap .layui-form {
+    margin: 80px 0 0 0
+}
+
+.login-wrap .layui-form-label {
+    width: 60px;
+    margin-left: 90px;
+}
+
+.login-wrap .layui-form-item {
+    margin-bottom: 30px;
+
+}
+
+.login-wrap .layui-input-block {
+    margin: 0 100px
+}
+
+.login-wrap .layui-btn {
+    margin-left: 20px;
+    margin-right: 30px;
+}
+
+.login-wrap .layui-input-inline {
+    width: 180px
+}
