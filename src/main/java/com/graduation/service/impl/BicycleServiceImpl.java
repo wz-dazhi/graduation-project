@@ -38,7 +38,7 @@ public class BicycleServiceImpl extends ServiceImpl<BicycleMapper, Bicycle> impl
         return p;
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public boolean editor(Bicycle bicycle) {
         if (categoryMapper.selectById(bicycle.getCid()) == null) {
@@ -49,7 +49,7 @@ public class BicycleServiceImpl extends ServiceImpl<BicycleMapper, Bicycle> impl
         return bicycle.getId() == null ? save(bicycle) : updateById(bicycle);
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public void del(IdsReq req) {
         List<Long> ids = req.getIds();

@@ -32,7 +32,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         return baseMapper.page(req);
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public boolean editor(Category category) {
         this.verifyName(category.getName(), category.getId());
@@ -50,7 +50,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         }
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public void del(IdsReq req) {
         List<Long> ids = req.getIds();

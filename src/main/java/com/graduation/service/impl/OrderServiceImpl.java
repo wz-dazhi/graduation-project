@@ -48,7 +48,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         return p;
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public boolean add(Order o) {
         Bicycle b = bicycleMapper.selectById(o.getBid());
@@ -87,7 +87,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         return save(o) && bicycleMapper.updateById(b) == 1 && logService.save(l);
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public boolean updateStatus(Order o) {
         Order currentOrder = getById(o.getId());

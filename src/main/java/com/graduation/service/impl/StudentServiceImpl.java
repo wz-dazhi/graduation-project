@@ -35,7 +35,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         return p;
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public boolean editor(Student s) {
         return s.getId() == null || s.getId() <= 0 ? save(s) : updateById(s) && logService.save(LogHelper.log(s.msg()));
@@ -47,7 +47,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
         return super.save(s) && logService.save(LogHelper.log(s.msg()));
     }
 
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     @Override
     public void del(IdsReq req) {
         List<Long> ids = req.getIds();
