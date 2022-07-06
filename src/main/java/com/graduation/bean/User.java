@@ -55,4 +55,11 @@ public class User extends Bean implements Serializable {
     public String toString() {
         return super.toString();
     }
+
+    public String msg() {
+        if (getId() == null) {
+            return String.format("新增用户. 姓名: %s, 账号: %s, 电话: %s", name, username, phone);
+        }
+        return String.format("更新用户. ID: %s, 姓名: %s, 账号: %s, 电话: %s", getId(), name, username, phone);
+    }
 }
