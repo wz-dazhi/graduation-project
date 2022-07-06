@@ -32,6 +32,12 @@
         FROM t_log l,
              t_user u
         WHERE l.operator_id = u.id
+        <if test="operatorName != null and operatorName != ''">
+            AND u.name = #{operatorName}
+        </if>
+        <if test="msg != null and msg != ''">
+            AND INSTR(l.msg, #{msg}) > 0
+        </if>
         ORDER BY l.create_time DESC
     </select>
 </mapper>
