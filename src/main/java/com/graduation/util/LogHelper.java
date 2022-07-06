@@ -28,7 +28,7 @@ public class LogHelper {
     }
 
     public static Log log(String msg, List<Long> ids) {
-        msg += ids.stream().map(String::valueOf).collect(Collectors.joining(","));
+        msg += ids.stream().map(String::valueOf).collect(Collectors.joining(", "));
         return log(msg);
     }
 
