@@ -8,13 +8,13 @@ layui.use(['table', 't', 'http'], () => {
     const table = layui.table, t = layui.t;
     const $ = layui.$, active = {
         reload: () => {
-            table.reload('reload', {
+            table.reload('listReload', {
                 page: {
                     curr: 1
                 },
                 where: {
-                    operatorName: $('#operatorName').val(),
-                    msg: $('#msg').val()
+                    operatorName: $('#searchOperatorName').val(),
+                    msg: $('#searchMsg').val()
                 }
             }, 'data');
         }
@@ -34,17 +34,16 @@ function list(t) {
     t.rander({
         elem: '#list',
         url: BASE_URI + '/page',
-        cellMinWidth: 173,
         cols: [[
-            {field: 'operatorName', title: '品牌名称', align: 'center'},
-            {field: 'msg', title: '备注', align: 'center', width: 350},
+            {field: 'operatorName', title: '操作人', align: 'center', width: 260},
+            {field: 'msg', title: '备注', align: 'center', width: 1183},
         ]],
-        id: 'reload',
+        id: 'listReload',
         page: true,
         width: '100%',
         height: 'full-110',
         title: '日志列表',
-        toolbar: '#toolbar',
+        // toolbar: '#toolbar',
         totalRow: true
     });
 }

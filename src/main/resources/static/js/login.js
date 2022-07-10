@@ -12,6 +12,10 @@ layui.use(['form', 'verify', 'http'], function () {
             username: f.username,
             password: f.password
         }).then(r => {
+            let u = r.data;
+            save(layui, 'name', u.name);
+            save(layui, 'username', u.username);
+            save(layui, 'avatar', u.avatar);
             location.href = '/home.html';
         }).catch(e => {
             console.log(e);
@@ -21,3 +25,7 @@ layui.use(['form', 'verify', 'http'], function () {
     });
 
 });
+
+function save(layui, key, value) {
+    layui.sessionData('u', {key: key, value: value});
+}

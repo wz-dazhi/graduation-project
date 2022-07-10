@@ -192,12 +192,12 @@ function list(t) {
             {type: 'checkbox', fixed: 'left'},
             {field: 'id', title: 'ID', align: 'center', sort: true, width: 80},
             {field: 'avatar', title: '头像', align: 'center', templet: '#imgTpl', width: 130},
-            {field: 'name', title: '姓名', align: 'center', width: 100},
-            {field: 'username', title: '账号', align: 'center', width: 160},
+            {field: 'name', title: '姓名', align: 'center', width: 150},
+            {field: 'username', title: '账号', align: 'center', width: 180},
             {field: 'phone', title: '电话', align: 'center'},
-            {field: 'loginTime', title: '登录时间', align: 'center'},
-            {field: 'remark', title: '备注', align: 'center'},
-            {fixed: 'right', title: '操作', align: 'center', toolbar: '#barOperation', width: 180}
+            {field: 'loginTime', title: '登录时间', align: 'center', width: 250},
+            {field: 'remark', title: '备注', align: 'center', width: 250},
+            {fixed: 'right', title: '操作', align: 'center', toolbar: '#barOperation', width: 200}
         ]],
         id: 'listReload',
         page: true,
