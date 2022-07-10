@@ -11,7 +11,7 @@ public interface UserService extends IService<User> {
 
     IPage<User> page(UserPageReq req);
 
-    void login(User u);
+    User login(User u);
 
     void quit();
 

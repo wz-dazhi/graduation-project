@@ -84,7 +84,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         b.setState(BicycleEnum.BORROWED.code());
         String msg = String.format("新增订单. 出借学生: %s,单车: %s,出借时间: %s", sid, o.getBid(), o.getBorrowTime().format(DateConsts.DATE_TIME_HH_MM_SS_FORMATTER));
         Log l = LogHelper.log(msg);
-        return save(o) && bicycleMapper.updateById(b) == 1 && logService.save(l);
+        return logService.save(l) && save(o) && bicycleMapper.updateById(b) == 1;
     }
 
     @Transactional
@@ -133,7 +133,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
                 o.getId(), o.getSid(), o.getBid(), returnTime, realRent, OrderEnum.desc(b.getState()));
         Log l = LogHelper.log(msg);
 
-        return updateById(o) && bicycleMapper.updateById(b) == 1 && logService.save(l);
+        return logService.save(l) && updateById(o) && bicycleMapper.updateById(b) == 1;
     }
 
     @Override

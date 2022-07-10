@@ -39,7 +39,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Transactional
     @Override
     public boolean editor(User user) {
-        return saveOrUpdate(user) && logService.save(LogHelper.log(user.msg()));
+        if (user.getId() == null) {
+            user.setPassword("123456");
+        }
+        return logService.save(LogHelper.log(user.msg())) && saveOrUpdate(user);
     }
 
     @Transactional
@@ -71,12 +74,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         u.setId(currentUser.getId());
         u.setPassword(np1);
 
-        return updateById(u) && logService.save(LogHelper.log("修改密码, 用户ID: " + u.getId()));
+        return logService.save(LogHelper.log("修改密码, 用户ID: " + u.getId())) && updateById(u);
     }
 
     @Transactional
     @Override
-    public void login(User u) {
+    public User login(User u) {
         if (null == u || StringUtil.isBlank(u.getUsername()) || StringUtil.isBlank(u.getPassword())) {
             throw new BusinessException("用户名密码不能为空");
         }
@@ -91,9 +94,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         user.setLoginTime(LocalDateTime.now());
         updateById(user);
-        Log l = LogHelper.log(String.format("登录成功. 登录时间: %s, IP: %s", user.getLoginTime().format(DateConsts.DATE_TIME_HH_MM_SS_FORMATTER), IpUtil.getIp()));
+        Log l = LogHelper.log(String.format("登录成功. 登录时间: %s, IP: %s", user.getLoginTime().format(DateConsts.DATE_TIME_HH_MM_SS_FORMATTER), IpUtil.getIp()), user.getId());
         logService.save(l);
         WebContextUtil.getSession().setAttribute("id", user.getId());
+        return user;
     }
 
     @Override

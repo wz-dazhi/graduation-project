@@ -52,9 +52,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Result<Void> login(@RequestBody User u) {
-        userService.login(u);
-        return R.ok();
+    public Result<User> login(@RequestBody User u) {
+        return R.ok(userService.login(u));
     }
 
     @GetMapping("/quit")

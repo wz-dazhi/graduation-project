@@ -37,11 +37,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
     public boolean editor(Category category) {
         this.verifyName(category.getName(), category.getId());
         Log l = LogHelper.log(category.msg());
+        logService.save(l);
         if (category.getId() == null || category.getId() <= 0) {
-            return this.save(category) && logService.save(l);
+            return this.save(category);
         }
 
-        return this.updateById(category) && logService.save(l);
+        return this.updateById(category);
     }
 
     private void verifyName(String name, Long id) {
