@@ -27,6 +27,13 @@ public class LogHelper {
                 .build();
     }
 
+    public static Log log(String msg, Long uid) {
+        return Log.builder()
+                .operatorId(uid)
+                .msg(msg)
+                .build();
+    }
+
     public static Log log(String msg, List<Long> ids) {
         msg += ids.stream().map(String::valueOf).collect(Collectors.joining(", "));
         return log(msg);
