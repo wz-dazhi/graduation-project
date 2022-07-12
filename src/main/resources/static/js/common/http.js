@@ -3,41 +3,41 @@ layui.define(["layer"], function (exports) {
 
     const http = {
 
-            get(uri, data) {
-                return this.request(this.params(uri, data), {method: 'GET'});
+            get(uri, data, successMsg = true) {
+                return this.request(this.params(uri, data), {method: 'GET'}, successMsg);
             },
 
-            post(uri, data) {
+            post(uri, data, successMsg = true) {
                 return this.request(uri, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
                     }
-                });
+                }, successMsg);
             },
 
-            put(uri, data) {
+            put(uri, data, successMsg = true) {
                 return this.request(uri, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
                     }
-                });
+                }, successMsg);
             },
 
-            del(uri, data) {
+            del(uri, data, successMsg = true) {
                 return this.request(uri, {
                     method: 'DELETE',
                     body: JSON.stringify(data),
                     headers: {
                         "Content-type": "application/json; charset=UTF-8"
                     }
-                });
+                }, successMsg);
             },
 
-            request(uri, init) {
+            request(uri, init, successMsg = true) {
                 let index = layer.load(2, {
                     shade: [0.2, '#393D49']
                 });
@@ -46,7 +46,9 @@ layui.define(["layer"], function (exports) {
                         .then(res => {
                             layer.close(index);
                             if (res.success) {
-                                layer.msg(res.msg, {icon: 6, time: 1000});
+                                if (successMsg) {
+                                    layer.msg(res.msg, {icon: 6, time: 1000});
+                                }
                                 resolve(res);
                             } else {
                                 layer.msg(res.msg, {icon: 5, time: 1000});
