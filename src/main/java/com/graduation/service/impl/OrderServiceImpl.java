@@ -130,7 +130,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         o.setRealRent(realRent);
 
         String msg = String.format("订单还车. 订单ID: %s, 学生: %s, 单车: %s, 归还时间: %s, 获得租金: %s, 归还状态: %s",
-                o.getId(), o.getSid(), o.getBid(), returnTime, realRent, OrderEnum.desc(b.getState()));
+                o.getId(), currentOrder.getSid(), currentOrder.getBid(), returnTime.format(DateConsts.DATE_TIME_HH_MM_SS_FORMATTER), realRent, OrderEnum.desc(b.getState()));
         Log l = LogHelper.log(msg);
 
         return logService.save(l) && updateById(o) && bicycleMapper.updateById(b) == 1;
