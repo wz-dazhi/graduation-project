@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @package: com.graduation.config
  * @className: WebConfig
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/22
  * @version: 1.0
  */
