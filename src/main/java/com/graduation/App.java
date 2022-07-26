@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @projectName: graduation-project
  * @className: App
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/13
  * @version: 1.0
  */
