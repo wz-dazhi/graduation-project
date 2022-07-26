@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  * @package: com.graduation.bean
  * @className: Bean
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/18
  * @version: 1.0
  */
