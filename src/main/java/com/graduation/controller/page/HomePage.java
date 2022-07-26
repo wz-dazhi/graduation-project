@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @package: com.graduation.controller.page
  * @className: HomePage
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/14
  * @version: 1.0
  */
