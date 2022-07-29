@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * @package: com.graduation.dto
  * @className: CategoryPageReq
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/18
  * @version: 1.0
  */
