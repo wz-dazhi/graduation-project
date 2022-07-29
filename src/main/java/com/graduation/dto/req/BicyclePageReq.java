@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * @package: com.graduation.dto.req
  * @className: BicyclePageReq
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/19
  * @version: 1.0
  */
