@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @package: com.graduation.dto.req
  * @className: ChangePasswordReq
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/7/5
  * @version: 1.0
  */
