@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
  * @package: com.graduation.enums
  * @className: BicycleEnum
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/20
  * @version: 1.0
  */
