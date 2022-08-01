@@ -8,7 +8,7 @@ import lombok.experimental.UtilityClass;
  * @package: com.graduation.interceptor
  * @className: UserHolder
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/22
  * @version: 1.0
  */
