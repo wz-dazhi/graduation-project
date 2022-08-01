@@ -10,7 +10,7 @@ import java.util.List;
  * @package: com.graduation.mapper
  * @className: StatisticsMapper
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/7/11
  * @version: 1.0
  */
