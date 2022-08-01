@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * @package: com.graduation.interceptor
  * @className: UserInterceptor
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/6/22
  * @version: 1.0
  */
