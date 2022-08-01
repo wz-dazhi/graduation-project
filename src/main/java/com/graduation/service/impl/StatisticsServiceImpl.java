@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * @package: com.graduation.service.impl
  * @className: StatisticsServiceImpl
  * @description:
- * @author: zhi
+ * @author: yue
  * @date: 2022/7/11
  * @version: 1.0
  */
