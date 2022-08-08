@@ -5,7 +5,7 @@ import com.graduation.bean.Log;
 import com.graduation.dto.req.LogPageReq;
 import com.graduation.mapper.LogMapper;
 import com.graduation.service.LogService;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 import org.springframework.stereotype.Service;
 
 @Service

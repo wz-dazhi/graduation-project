@@ -1,7 +1,7 @@
 package com.graduation.dto.req;
 
 import com.wz.common.util.JsonUtil;
-import com.wz.datasource.mybatisplus.model.Page;
+import com.wz.datasource.common.mybatisplus.model.Page;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

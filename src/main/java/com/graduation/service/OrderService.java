@@ -5,7 +5,7 @@ import com.graduation.bean.Order;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.dto.req.OrderPageReq;
 import com.graduation.dto.resp.OrderPageResp;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 
 public interface OrderService extends IService<Order> {
 

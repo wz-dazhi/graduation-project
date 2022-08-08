@@ -1,7 +1,7 @@
 package com.graduation.bean;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.wz.datasource.mybatisplus.model.BaseBean;
+import com.wz.datasource.common.model.BaseBean;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

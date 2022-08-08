@@ -6,7 +6,7 @@ import com.graduation.dto.req.BicyclePageReq;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.dto.resp.BicyclePageResp;
 import com.graduation.service.BicycleService;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 import com.wz.swagger.model.Result;
 import com.wz.swagger.util.R;
 import lombok.AllArgsConstructor;

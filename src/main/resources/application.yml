@@ -4,43 +4,10 @@ spring:
   application:
     name: graduation-project
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      filter:
-        config:
-          enabled: true
-        wall:
-          enabled: true
-      web-stat-filter:
-        enabled: true
-      stat-view-servlet:
-        url-pattern: /druid/*
-        login-username: druid
-        login-password: druid
-      master:
-        driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-        url: jdbc:p6spy:mysql://localhost:3306/bicycle?useUnicode=true&characterEncoding=utf-8&useSSL=false
-        username: root
-        password: 123456
-        db-type: mysql
-        initial-size: 5
-        min-idle: 5
-        max-active: 10
-        max-wait: 60000
-        validation-query: select 'x'
-        test-while-idle: true
-      slave:
-        driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-        url: jdbc:p6spy:mysql://localhost:3306/bicycle?useUnicode=true&characterEncoding=utf-8&useSSL=false
-        username: root
-        password: 123456
-        db-type: mysql
-        initial-size: 5
-        min-idle: 5
-        max-active: 10
-        max-wait: 60000
-        validation-query: select 'x'
-        test-while-idle: true
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://localhost:3306/bicycle?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
   thymeleaf:
     cache: false
 mybatis-plus:
@@ -58,8 +25,8 @@ api:
     description: 单车租赁接口文档
     version: 1.0.0
     contact:
-      name: 王治
-      email: dazhi88@88.com
+      name: yue
+      email: yue@123.com
     base-package: com.graduation.controller.rest
 knife4j:
   enable: true

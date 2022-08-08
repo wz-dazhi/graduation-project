@@ -5,7 +5,7 @@ import com.graduation.bean.Bicycle;
 import com.graduation.dto.req.BicyclePageReq;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.dto.resp.BicyclePageResp;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 
 public interface BicycleService extends IService<Bicycle> {
 

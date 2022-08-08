@@ -6,7 +6,7 @@ import com.graduation.dto.req.ChangePasswordReq;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.dto.req.UserPageReq;
 import com.graduation.service.UserService;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 import com.wz.swagger.model.Result;
 import com.wz.swagger.util.R;
 import lombok.AllArgsConstructor;

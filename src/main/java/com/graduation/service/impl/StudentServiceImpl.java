@@ -15,7 +15,7 @@ import com.graduation.service.LogService;
 import com.graduation.service.StudentService;
 import com.graduation.util.LogHelper;
 import com.wz.common.exception.BusinessException;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

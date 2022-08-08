@@ -12,13 +12,13 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <wz-component.version>1.0.0</wz-component.version>
+        <wz-component.version>1.1.1</wz-component.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.github.wz-dazhi.wz-component</groupId>
-            <artifactId>wz-datasource</artifactId>
+            <artifactId>wz-datasource-common</artifactId>
             <version>${wz-component.version}</version>
         </dependency>
         <dependency>

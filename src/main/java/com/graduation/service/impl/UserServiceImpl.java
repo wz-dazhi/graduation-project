@@ -16,7 +16,7 @@ import com.graduation.util.LogHelper;
 import com.wz.common.constant.DateConsts;
 import com.wz.common.exception.BusinessException;
 import com.wz.common.util.StringUtil;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 import com.wz.webmvc.util.IpUtil;
 import com.wz.webmvc.util.WebContextUtil;
 import lombok.AllArgsConstructor;

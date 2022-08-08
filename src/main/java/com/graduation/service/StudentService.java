@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.graduation.bean.Student;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.dto.req.StudentPageReq;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 
 public interface StudentService extends IService<Student> {
 

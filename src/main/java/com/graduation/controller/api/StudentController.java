@@ -5,7 +5,7 @@ import com.graduation.constant.Const;
 import com.graduation.dto.req.IdsReq;
 import com.graduation.dto.req.StudentPageReq;
 import com.graduation.service.StudentService;
-import com.wz.datasource.mybatisplus.model.IPage;
+import com.wz.datasource.common.mybatisplus.model.IPage;
 import com.wz.swagger.model.Result;
 import com.wz.swagger.util.R;
 import lombok.AllArgsConstructor;
